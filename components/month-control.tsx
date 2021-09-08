@@ -18,7 +18,7 @@ export const MonthControl: React.VFC = () => {
   }, [date]);
 
   const onDateChanged = (duration: number) => {
-    const targetDate = date.plus({ month: duration }).set({ day: 1 });
+    const targetDate = date.plus({ months: duration }).set({ day: 1 });
     setDate(targetDate);
   };
 
