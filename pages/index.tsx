@@ -41,7 +41,7 @@ export default function Index() {
   const { data: symptoms, error: symptomsError, mutate: mutateSymptoms } = useSWR<Symptom[], AxiosError>('/symptom/all', getFetcher('/symptom/all', user));
   const { data: diaries, error: diariesError, mutate: mutateDiaries } = useSWR<Diary[], AxiosError>(
     `/diary?year=${date.year}&month=${date.month}`,
-    args => axios.get(environment.baseUrl + args, getConfig(user)).then(res => {
+    args => axios.get(environment.apiUrl + args, getConfig(user)).then(res => {
       return res.data.map((diary: any) => ({
         ...diary,
         date: DateTime.fromFormat(diary.date, 'yyyy-MM-dd'),

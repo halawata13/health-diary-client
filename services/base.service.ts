@@ -10,7 +10,7 @@ export default abstract class BaseService {
 
   constructor(user: User) {
     this.axiosInstance = axios.create({
-      baseURL: environment.baseUrl,
+      baseURL: environment.apiUrl,
       headers: {
         Authorization: `Bearer ${user.accessToken}`,
       },
@@ -19,7 +19,7 @@ export default abstract class BaseService {
 }
 
 export const getFetcher = (url: string, user: User | null) => {
-  return () => axios.get(environment.baseUrl + url, getConfig(user)).then(res => res.data);
+  return () => axios.get(environment.apiUrl + url, getConfig(user)).then(res => res.data);
 };
 
 export const getConfig = (user: User | null): AxiosRequestConfig => {

@@ -32,7 +32,7 @@ i18next
   });
 
 const swrConfig: SWRConfiguration = {
-  fetcher: args => axios.get(environment.baseUrl + args).then(res => res.data),
+  fetcher: args => axios.get(environment.apiUrl + args).then(res => res.data),
   revalidateOnFocus: false,
 };
 

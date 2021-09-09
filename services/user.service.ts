@@ -12,7 +12,7 @@ export class UserService {
       password,
     };
 
-    return axios.post<User>(`${environment.baseUrl}/auth/login`, params).then(res => res.data);
+    return axios.post<User>(`${environment.apiUrl}/auth/login`, params).then(res => res.data);
   }
 
   public static save(user: User, useSessionStorage = true) {
