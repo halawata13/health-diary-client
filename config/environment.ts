@@ -1,7 +1,7 @@
 const apiUrl = (() => {
   switch (process.env.NODE_ENV) {
     case 'production':
-      return 'https://health.halawata.net/api';
+      return 'https://api.halawata.net/health';
 
     default:
       return 'http://localhost:3000';
