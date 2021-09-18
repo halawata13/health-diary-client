@@ -98,6 +98,7 @@ export const ConditionForm: React.VFC<Props> = props => {
       return s;
     });
 
+    console.log(data);
     props.onSubmit(data, deleteIds, modalState.diary?.id);
     setDiaryFormModalState({ show: false });
     reset();
@@ -206,7 +207,7 @@ const rowStyle = css`
 const labelStyle = css`
   flex: 0 0 auto;
   width: 12rem;
-  padding-top: 0.4rem;
+  padding-top: 1.2rem;
   font-size: 1.4rem;
 `;
 
@@ -233,6 +234,10 @@ const conditionInputStyle = css(inputStyle, css`
 const appendRowStyle = css`
   display: flex;
   padding-top: 0.8rem;
+  
+  &:first-child {
+    padding-top: 0;
+  }
 `;
 
 const appendInputStyle = css(inputStyle, css`
@@ -246,7 +251,7 @@ const appendButtonStyle = css(buttonStyle, css`
   min-width: auto;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-color: ${blue["50"]};
+  border-color: ${blue["100"]};
   background-color: ${blue["50"]};
   color: ${blue["900"]};
   
