@@ -87,7 +87,7 @@ export default function Index() {
 
   return (
     <Auth>
-      <Header user={user} />
+      <Header />
       <Main>
         <Section>
           <SectionHeader>

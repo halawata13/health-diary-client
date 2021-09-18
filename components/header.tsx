@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { css } from '@emotion/css';
 import { variables } from "../styles/variables";
 import { ConfigMenu } from './config-menu';
 import { User } from '../types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-
-interface Props {
-  user?: User
-}
+import { UserService } from "../services/user.service";
 
 /**
  * ヘッダ
  */
-export const Header: React.VFC<Props> = props => {
+export const Header = memo(() => {
+  const user = UserService.load();
   const router = useRouter();
 
   return (
@@ -22,17 +20,17 @@ export const Header: React.VFC<Props> = props => {
         <h1 className={titleStyle}>
           <Link href={'/'}><a>Health Diary</a></Link>
         </h1>
-        {props.user && (
+        {user && (
           <nav className={navStyle}>
             <Link href={'/'} passHref={true}><a className={[navItemStyle, router.pathname === '/' ? navItemSelectedStyle : ''].join(' ')}>日々の記録</a></Link>
             <Link href={'/symptom'} passHref={true}><a className={[navItemStyle, router.pathname === '/symptom' ? navItemSelectedStyle : ''].join(' ')}>症状の登録</a></Link>
           </nav>
         )}
       </div>
-      {props.user ? <ConfigMenu /> : <div />}
+      {user ? <ConfigMenu /> : <div />}
     </header>
   );
-};
+});
 
 const headerStyle = css`
   display: flex;
