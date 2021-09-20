@@ -2,8 +2,8 @@ import React, { memo } from 'react';
 import { css } from '@emotion/css';
 import { variables } from "../styles/variables";
 import { ConfigMenu } from './config-menu';
-import { User } from '../types';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { UserService } from "../services/user.service";
 
@@ -18,12 +18,17 @@ export const Header = memo(() => {
     <header className={headerStyle}>
       <div className={leftStyle}>
         <h1 className={titleStyle}>
-          <Link href={'/'}><a>Health Diary</a></Link>
+          <Link href={'/'}>
+            <a>
+              <Image src={'/images/logo.svg'} width={24} height={24} alt={'logo'} />
+              <span>Health</span> Diary
+            </a>
+          </Link>
         </h1>
         {user && (
           <nav className={navStyle}>
             <Link href={'/'} passHref={true}><a className={[navItemStyle, router.pathname === '/' ? navItemSelectedStyle : ''].join(' ')}>日々の記録</a></Link>
-            <Link href={'/symptom'} passHref={true}><a className={[navItemStyle, router.pathname === '/symptom' ? navItemSelectedStyle : ''].join(' ')}>症状の登録</a></Link>
+            <Link href={'/symptom'} passHref={true}><a className={[navItemStyle, router.pathname === '/symptom' ? navItemSelectedStyle : ''].join(' ')}>症状一覧</a></Link>
           </nav>
         )}
       </div>
@@ -48,10 +53,20 @@ const leftStyle = css`
 `;
 
 const titleStyle = css`
-  font-family: "Mulish", sans-serif;
   font-size: 2rem;
   font-weight: 300;
-  color: ${variables.colorTextDark};
+  color: ${variables.colorTextLight};
+  
+  a {
+    display: flex;
+    align-items: center;
+  }
+  
+  span {
+    margin-left: 8px;
+    font-weight: 600;
+    color: ${variables.colorTextDark};
+  }
 `;
 
 const navStyle = css`

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { css } from "@emotion/css";
 import { variables } from "../styles/variables";
 import { blue } from "@material-ui/core/colors";
-import { IoCheckmarkOutline } from "react-icons/io5";
+import { IoEyeOutline } from "react-icons/io5";
 import { Diary, DiaryNoData, Symptom } from '../types';
 import { getColor } from '../services/color.service';
 
@@ -87,7 +87,7 @@ export const GraphControlSymptomList: React.VFC<Props> = props => {
                    backgroundColor: checkColor,
                    borderColor: checkColor,
                  } : {}}>
-              <IoCheckmarkOutline className={checkIconStyle} />
+              <IoEyeOutline className={checkIconStyle} />
             </div>
             <div className={labelStyle}>{symptomMap.get(symptom.id)?.name}</div>
             <div className={valueStyle}>{symptom.count}日</div>

@@ -4,6 +4,7 @@ import { variables } from "../styles/variables";
 import { useForm } from 'react-hook-form';
 import { inputStyle } from "../styles/shared/form";
 import { Button } from "./button";
+import { red } from "@material-ui/core/colors";
 
 interface Props {
   onSubmit: (params: LoginFormParams) => void;
@@ -25,24 +26,28 @@ export const LoginForm: React.VFC<Props> = props => {
     <form className={formStyle} onSubmit={onSubmit}>
       <div className={formRowStyle}>
         <label className={formLabelStyle}>ユーザー名</label>
-        <input type={'text'} {...register('username', { required: true })} className={inputStyle} />
-        {props.error && (
-          <div>IDかパスワードが間違っています</div>
-        )}
-        {errors.username && (
-          <div>ユーザー名を入力してください</div>
-        )}
+        <div className={formControlStyle}>
+          <input type={'text'} {...register('username', { required: true })} className={inputStyle} />
+          {props.error && (
+            <div className={formErrorStyle}>IDかパスワードが間違っています</div>
+          )}
+          {errors.username && (
+            <div className={formErrorStyle}>ユーザー名を入力してください</div>
+          )}
+        </div>
       </div>
 
       <div className={formRowStyle}>
         <label className={formLabelStyle}>パスワード</label>
-        <input type={'password'} {...register('password', { required: true })} className={inputStyle} />
-        {props.error && (
-          <div>IDかパスワードが間違っています</div>
-        )}
-        {errors.password && (
-          <div>パスワードを入力してください</div>
-        )}
+        <div className={formControlStyle}>
+          <input type={'password'} {...register('password', { required: true })} className={inputStyle} />
+          {props.error && (
+            <div className={formErrorStyle}>IDかパスワードが間違っています</div>
+          )}
+          {errors.password && (
+            <div className={formErrorStyle}>パスワードを入力してください</div>
+          )}
+        </div>
       </div>
 
       <div className={buttonContainerStyle}>
@@ -56,7 +61,7 @@ const formStyle = css`
   width: 50rem;
   padding: 3.2rem 1.6rem;
   box-shadow: ${variables.shadow};
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background-color: #fff;
   font-size: 1.4rem;
 `;
@@ -67,10 +72,19 @@ const formRowStyle = css`
   margin-bottom: 1.6rem;
 `;
 
+const formControlStyle = css`
+  flex-grow: 1;
+`;
+
 const formLabelStyle = css`
   width: 15rem;
   margin-right: 1.6rem;
   text-align: right;
+`;
+
+const formErrorStyle = css`
+  margin-top: 0.4rem;
+  color: ${red['900']};
 `;
 
 const buttonContainerStyle = css`

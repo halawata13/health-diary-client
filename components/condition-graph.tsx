@@ -92,6 +92,8 @@ export const ConditionGraph: React.VFC<Props> = props => {
       data,
       backgroundColor: getColor(symptom.color)['800'],
       yAxisID: 'symptom',
+      borderWidth: 0,
+      barPercentage: 0.3,
     });
   });
 

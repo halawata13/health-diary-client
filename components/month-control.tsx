@@ -54,5 +54,6 @@ const yearStyle = css`
 
 const monthStyle = css`
   font-size: 2.4rem;
+  font-weight: bold;
   color: ${variables.colorTextDark};
 `;

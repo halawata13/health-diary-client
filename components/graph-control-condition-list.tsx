@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { css } from "@emotion/css";
 import { variables } from "../styles/variables";
-import { blue, grey } from "@material-ui/core/colors";
-import { IoCheckmarkOutline } from "react-icons/io5";
+import { grey } from "@material-ui/core/colors";
+import { IoEyeOutline } from "react-icons/io5";
 import { Diary, DiaryNoData } from '../types';
 
 interface Props {
@@ -27,7 +27,7 @@ export const GraphControlConditionList: React.VFC<Props> = props => {
       </div>
       <div className={[listStyle, props.displayCondition ? '-checked' : ''].join(' ')} onClick={() => props.onCheckChanged(!props.displayCondition)}>
         <div className={checkStyle}>
-          <IoCheckmarkOutline className={checkIconStyle} />
+          <IoEyeOutline className={checkIconStyle} />
         </div>
         <div className={labelStyle}>コンディション</div>
         <div className={valueStyle}>{min}</div>
