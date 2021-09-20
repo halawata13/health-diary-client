@@ -26,11 +26,13 @@ export const SymptomList: React.VFC<Props> = props => {
 
   // 追加クリック
   const onAppendClicked = () => {
-    setSymptoms([{
+    setSymptoms([
       ...symptoms,
-      name: '',
-      color: colors[0],
-    }]);
+      {
+        name: '',
+        color: colors[0],
+      },
+    ]);
   };
 
   // 色変更時
