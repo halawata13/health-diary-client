@@ -5,9 +5,13 @@ import { Button } from './button';
 import { Section } from './section';
 import { Main } from './main';
 import { AxiosError } from 'axios';
+import { useRouter } from "next/router";
 
 export const getErrorComponent = (error?: AxiosError, text?: string) => {
+  const router = useRouter();
+
   if (error?.response?.status === 401) {
+    router.push('/login');
     return <></>;
   }
 

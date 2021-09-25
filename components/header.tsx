@@ -28,7 +28,7 @@ export const Header = memo(() => {
         {user && (
           <nav className={navStyle}>
             <Link href={'/'} passHref={true}><a className={[navItemStyle, router.pathname === '/' ? navItemSelectedStyle : ''].join(' ')}>日々の記録</a></Link>
-            <Link href={'/symptom'} passHref={true}><a className={[navItemStyle, router.pathname === '/symptom' ? navItemSelectedStyle : ''].join(' ')}>症状一覧</a></Link>
+            <Link href={'/symptom'} passHref={true}><a className={[navItemStyle, router.pathname.startsWith('/symptom') ? navItemSelectedStyle : ''].join(' ')}>症状一覧</a></Link>
           </nav>
         )}
       </div>

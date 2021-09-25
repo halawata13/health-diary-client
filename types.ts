@@ -10,6 +10,7 @@ export interface Symptom {
   id: number;
   name: string;
   color: Color;
+  count: number;
   isDeletable?: boolean
 }
 

@@ -1,161 +1,77 @@
-import React, { useEffect, useState } from 'react';
-import { Symptom, Color, colors, NewSymptom } from '../types';
-import { Button } from './button';
+import { Symptom } from "../types";
 import { css } from "@emotion/css";
-import { inputStyle } from "../styles/shared/form";
-import { variables } from "../styles/variables";
-import { IoAddCircleOutline, IoTrashOutline } from "react-icons/io5";
+import { grey } from "@material-ui/core/colors";
+import { getColor } from "../services/color.service";
 
 interface Props {
   symptoms: Symptom[];
-  onCreate: (symptom: NewSymptom) => void;
-  onUpdate: (symptom: Symptom) => void;
-  onDelete: (symptom: Symptom) => void;
 }
 
-/**
- * 症状リスト
- */
-export const SymptomList: React.VFC<Props> = props => {
-  const [ symptoms, setSymptoms ] = useState<(Symptom | NewSymptom)[]>(props.symptoms);
-  let newSymptomId = -1;
-
-  useEffect(() => {
-    setSymptoms(props.symptoms);
-  }, [props.symptoms]);
-
-  // 追加クリック
-  const onAppendClicked = () => {
-    setSymptoms([
-      ...symptoms,
-      {
-        name: '',
-        color: colors[0],
-      },
-    ]);
-  };
-
-  // 色変更時
-  const onColorChanged = (symptom: Symptom | NewSymptom, color: string, index: number) => {
-    if ('id' in symptom) {
-      props.onUpdate({
-        ...symptom,
-        color: color as Color,
-      });
-    } else {
-      setSymptoms(symptoms.map((s, i) => {
-        if (index === i) {
-          return {
-            ...s,
-            color: color as Color,
-          }
-        }
-
-        return s;
-      }));
-    }
-  };
-
-  // 名称変更時
-  const onNameChanged = (symptom: Symptom | NewSymptom, name: string, index: number) => {
-    if ('id' in symptom) {
-      props.onUpdate({
-        ...symptom,
-        name,
-      });
-    } else {
-      props.onCreate({
-        name,
-        color: symptoms[index]?.color ?? 'red',
-      });
-    }
-  };
-
-  // 削除時
-  const onDeleted = (symptom: Symptom | NewSymptom, index: number) => {
-    if (!('id' in symptom)) {
-      symptoms.splice(index, 1);
-      setSymptoms(symptoms);
-      return;
-    }
-
-    props.onDelete(symptom);
-  };
-
+export const SymptomList = (props: Props) => {
   return (
-    <form className={containerStyle}>
-      <div className={labelRowStyle}>
-        <div className={labelFirstStyle}>識別色</div>
-        <div>名前</div>
+    <div className={containerStyle}>
+      <div className={headerStyle}>
+        <div className={contentColorStyle}>識別色</div>
+        <div className={contentSymptomStyle}>症状名</div>
+        <div className={contentCountStyle}>出現回数</div>
       </div>
       <ul className={listStyle}>
-        {symptoms.map((symptom, index) => (
-          <li className={itemStyle} key={'id' in symptom ? symptom.id : newSymptomId--}>
-            <select defaultValue={symptom.color} className={colorSelectStyle} onBlur={ev => onColorChanged(symptom, ev.currentTarget.value, index)}>
-              {colors.map((color, index) => (
-                <option value={color} key={index}>{color}</option>
-              ))}
-            </select>
-            <input defaultValue={symptom.name} onBlur={ev => onNameChanged(symptom, ev.currentTarget.value, index)} className={nameInputStyle} max={255} />
-            <Button onClick={() => onDeleted(symptom, index)} variant={'danger'} iconOnly={true} disabled={symptom.isDeletable === false}>
-              <IoTrashOutline />
-            </Button>
+        {props.symptoms.map(symptom => (
+          <li key={symptom.id} className={itemStyle}>
+            <div className={contentColorStyle}>
+              <span className={colorIconStyle} style={{
+                backgroundColor: getColor(symptom.color)?.['800']
+              }} />
+            </div>
+            <div className={contentSymptomStyle}>{symptom.name}</div>
+            <div className={contentCountStyle}>{symptom.count}</div>
           </li>
         ))}
       </ul>
-      <div className={buttonSetStyle}>
-        <Button onClick={() => onAppendClicked()} variant={'info'}>
-          <IoAddCircleOutline />
-          追加
-        </Button>
-      </div>
-    </form>
+    </div>
   );
 };
 
 const containerStyle = css`
   padding: 1.6rem;
+  font-size: 1.4rem;
+`;
+
+const headerStyle = css`
+  display: flex;
+  border-bottom: solid 1px ${grey['300']};
+  font-weight: bold;
 `;
 
 const listStyle = css`
-  margin-bottom: 1.6rem;
+  list-style: none;
 `;
 
 const itemStyle = css`
   display: flex;
-  align-items: center;
-  margin-bottom: 0.8rem;
+  border-bottom: solid 1px ${grey['200']};
 `;
 
-const colorSelectStyle = css`
-  height: 4.4rem;
-  width: 10rem;
-  margin-right: 0.8rem;
-  padding: 0 0.8rem;
-  border-radius: 0.4rem;
-  border: solid 1px ${variables.colorBorder};
-  font-size: 1.4rem;
+const contentColorStyle = css`
+  width: 10%;
+  padding: 0.8rem 0.4rem;
+  text-align: center;
 `;
 
-const nameInputStyle = css(inputStyle, css`
-  flex-grow: 1;
-  margin-right: 0.8rem;
-`);
-
-const buttonSetStyle = css`
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 1.6rem;
-  border-top: solid 1px ${variables.colorBorder};
+const colorIconStyle = css`
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
 `;
 
-const labelRowStyle = css`
-  display: flex;
-  margin-bottom: 0.4rem;
-  font-size: 1.4rem;
-  font-weight: bold;
+const contentSymptomStyle = css`
+  width: 80%;
+  padding: 0.8rem 0.4rem;
 `;
 
-const labelFirstStyle = css`
-  width: 10.8rem;
+const contentCountStyle = css`
+  width: 10%;
+  padding: 0.8rem 0.4rem;
+  text-align: center;
 `;
