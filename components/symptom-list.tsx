@@ -25,9 +25,9 @@ export const SymptomList = (props: Props) => {
             <Link href={`/symptom/${symptom.id}`} passHref={true}>
               <a className={itemStyle}>
                 <div className={contentColorStyle}>
-                <span className={colorIconStyle} style={{
-                  backgroundColor: getColor(symptom.color)?.['800']
-                }} />
+                  <span className={colorIconStyle} style={{
+                    backgroundColor: getColor(symptom.color)?.['800']
+                  }} />
                 </div>
                 <div className={contentSymptomStyle}>{symptom.name}</div>
                 <div className={contentCountStyle}>{symptom.count}</div>
@@ -67,15 +67,15 @@ const contentColorStyle = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
+  width: 8rem;
   padding: 1.2rem 0.4rem;
 `;
 
 const colorIconStyle = css`
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  border-radius: 3px;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 0.3rem;
 `;
 
 const contentSymptomStyle = css`
@@ -84,7 +84,7 @@ const contentSymptomStyle = css`
 `;
 
 const contentCountStyle = css`
-  width: 80px;
+  width: 8rem;
   padding: 1.2rem 0.4rem;
   text-align: center;
 `;
@@ -93,7 +93,7 @@ const contentIconStyle = css`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 80px;
+  width: 8rem;
   padding: 0 0.8rem;
   font-size: 1.6rem;
   color: ${variables.colorTextDark};

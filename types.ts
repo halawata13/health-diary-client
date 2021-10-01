@@ -14,6 +14,16 @@ export interface Symptom {
   isDeletable?: boolean
 }
 
+export interface SymptomWithDiarySymptoms {
+  id: number;
+  name: string;
+  color: Color;
+  diarySymptoms: {
+    level: number;
+    date: string;
+  }[];
+}
+
 export const colors = [
   'red',
   'pink',

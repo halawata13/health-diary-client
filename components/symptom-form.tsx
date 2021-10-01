@@ -5,6 +5,7 @@ import { css } from "@emotion/css";
 import { inputStyle } from "../styles/shared/form";
 import { variables } from "../styles/variables";
 import { IoAddCircleOutline, IoTrashOutline } from "react-icons/io5";
+import { getColor } from '../services/color.service';
 
 interface Props {
   symptoms: Symptom[];
@@ -93,12 +94,15 @@ export const SymptomForm: React.VFC<Props> = props => {
       <ul className={listStyle}>
         {symptoms.map((symptom, index) => (
           <li className={itemStyle} key={'id' in symptom ? symptom.id : newSymptomId--}>
-            <select defaultValue={symptom.color} className={colorSelectStyle} onBlur={ev => onColorChanged(symptom, ev.currentTarget.value, index)}>
+            <span className={colorIconStyle} style={{
+              backgroundColor: getColor(symptom.color)?.['800']
+            }} />
+            <select defaultValue={symptom.color} className={colorSelectStyle} onChange={ev => onColorChanged(symptom, ev.currentTarget.value, index)}>
               {colors.map((color, index) => (
                 <option value={color} key={index}>{color}</option>
               ))}
             </select>
-            <input defaultValue={symptom.name} onBlur={ev => onNameChanged(symptom, ev.currentTarget.value, index)} className={nameInputStyle} max={255} />
+            <input defaultValue={symptom.name} onChange={ev => onNameChanged(symptom, ev.currentTarget.value, index)} className={nameInputStyle} max={255} />
             <Button onClick={() => onDeleted(symptom, index)} variant={'danger'} iconOnly={true} disabled={symptom.isDeletable === false}>
               <IoTrashOutline />
             </Button>
@@ -129,12 +133,20 @@ const itemStyle = css`
   margin-bottom: 0.8rem;
 `;
 
+const colorIconStyle = css`
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-right: 0.8rem;
+  border-radius: 0.3rem;
+`;
+
 const colorSelectStyle = css`
   height: 4.4rem;
   width: 10rem;
   margin-right: 0.8rem;
   padding: 0 0.8rem;
-  border-radius: 0.4rem;
+  border-radius: 1rem;
   border: solid 1px ${variables.colorBorder};
   font-size: 1.4rem;
 `;
@@ -159,5 +171,5 @@ const labelRowStyle = css`
 `;
 
 const labelFirstStyle = css`
-  width: 10.8rem;
+  width: 12.8rem;
 `;

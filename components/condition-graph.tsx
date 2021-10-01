@@ -119,7 +119,7 @@ export const ConditionGraph: React.VFC<Props> = props => {
 
   return (
     <div className={containerStyle}>
-      <Line data={data as any} options={options as any} />
+      <Line data={data} options={options} />
     </div>
   );
 };
