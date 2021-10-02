@@ -17,7 +17,7 @@ export const getErrorComponent = (error?: AxiosError, text?: string) => {
 
   return (
     <>
-      <Header/>
+      <Header />
       <Main>
         <Section>
           <div className={containerStyle}>

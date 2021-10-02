@@ -9,6 +9,7 @@ import { Main } from "../../components/main";
  * ログインページ
  */
 export default function Index() {
+  UserService.delete();
   const router = useRouter();
   const [ error, setError ] = useState(false);
 
