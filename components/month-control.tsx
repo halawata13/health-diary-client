@@ -143,6 +143,10 @@ const controlSelectStyle = css`
   padding: 0 0.8rem;
   border-radius: 0.4rem;
   border: solid 1px ${variables.colorBorder};
+  background-image: url("/images/arrow.svg");
+  background-repeat: no-repeat;
+  background-size: 1.6rem 1.6rem;
+  background-position: calc(100% - 0.4rem) center;
   background-color: #fff;
   font-size: 1.4rem;
 `;
@@ -152,7 +156,7 @@ const controlSelectYearStyle = css(controlSelectStyle, css`
 `);
 
 const controlSelectMonthStyle = css(controlSelectStyle, css`
-  width: 4.8rem;
+  width: 6.4rem;
 `);
 
 const controlBgStyle = css`
