@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from "@emotion/css";
 import { variables } from "../styles/variables";
 import { grey } from "@material-ui/core/colors";
@@ -11,7 +10,7 @@ interface Props {
   displayCondition: boolean;
 }
 
-export const GraphControlConditionList: React.VFC<Props> = props => {
+export const GraphControlConditionList = (props: Props) => {
   const values = props.diaries.filter(d => 'id' in d).map(d => ('id' in d) ? d.condition : 0);
 
   const min = values.length > 0 ? Math.min(...values) : null;

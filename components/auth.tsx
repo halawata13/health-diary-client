@@ -1,4 +1,4 @@
-import React from 'react';
+import { PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
 import { UserService } from '../services/user.service';
 
@@ -8,7 +8,7 @@ import { UserService } from '../services/user.service';
  * @param props
  * @constructor
  */
-export const Auth: React.FC = props => {
+export const Auth = (props: PropsWithChildren<{}>) => {
   const router = useRouter();
   const user = UserService.load();
 

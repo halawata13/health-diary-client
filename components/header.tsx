@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { css } from '@emotion/css';
 import { variables } from "../styles/variables";
 import { ConfigMenu } from './config-menu';

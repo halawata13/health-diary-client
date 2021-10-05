@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from "@emotion/css";
 import { variables } from "../styles/variables";
 import { blue } from "@material-ui/core/colors";
@@ -19,7 +18,7 @@ interface SymptomItem {
   count: number;
 }
 
-export const GraphControlSymptomList: React.VFC<Props> = props => {
+export const GraphControlSymptomList = (props: Props) => {
   const symptomMap = new Map<number, Symptom>();
   props.symptoms.forEach(symptom => {
     symptomMap.set(symptom.id, symptom);

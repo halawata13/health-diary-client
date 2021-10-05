@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from "@emotion/css";
 import { variables } from "../styles/variables";
 import { blue, grey, red } from "@material-ui/core/colors";
@@ -12,7 +11,7 @@ interface Props {
   diary: Diary | DiaryNoData;
 }
 
-export const ConditionListItem: React.VFC<Props> = props => {
+export const ConditionListItem = (props: Props) => {
   const setDate = useSetRecoilState(dateState);
   const setDiaryFromModalState = useSetRecoilState(diaryFormModalState);
 

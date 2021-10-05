@@ -1,8 +1,8 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import { css } from "@emotion/css";
 import { variables } from "../styles/variables";
 
-export const Section: React.VFC<PropsWithChildren<{}>> = props => (
+export const Section = (props: PropsWithChildren<{}>) => (
   <section className={sectionStyle}>{props.children}</section>
 );
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { ConditionList } from "./condition-list";
 import { Diary, DiaryNoData } from "../types";
 import { css } from "@emotion/css";
@@ -10,7 +9,7 @@ interface Props {
 
 const now = DateTime.now();
 
-export const ListView: React.VFC<Props> = props => {
+export const ListView = (props: Props) => {
   const diaries = props.diaries.filter(diary => now.month !== diary.date.month || now.day >= diary.date.day).reverse();
 
   return (

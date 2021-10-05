@@ -1,11 +1,7 @@
-import React from 'react';
 import { css } from "@emotion/css";
+import { PropsWithChildren } from 'react';
 
-interface Props {
-  children: React.ReactNode;
-}
-
-export const SectionHeader: React.VFC<Props> = props => (
+export const SectionHeader = (props: PropsWithChildren<{}>) => (
   <header className={headerStyle}>{props.children}</header>
 );
 

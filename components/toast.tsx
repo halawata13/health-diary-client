@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { ToastMessageType, toastState } from '../states/toast.state';
 import { css } from "@emotion/css";
@@ -6,7 +6,7 @@ import { blue, orange, red, teal } from "@material-ui/core/colors";
 
 let hiddenTimer: number;
 
-export const Toast: React.VFC = () => {
+export const Toast = () => {
   const [ toast, setToast ] = useRecoilState(toastState);
 
   useEffect(() => {

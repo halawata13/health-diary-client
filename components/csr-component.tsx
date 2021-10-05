@@ -1,10 +1,6 @@
-import React from 'react';
+import { PropsWithChildren } from 'react';
 
-interface Props {
-  children: JSX.Element | JSX.Element[];
-}
-
-const CsrComponent = (props: Props) => {
+const CsrComponent = (props: PropsWithChildren<{}>) => {
   return <>{props.children}</>;
 };
 

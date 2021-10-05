@@ -1,14 +1,13 @@
-import React from 'react';
 import { css } from "@emotion/css";
+import { MouseEvent, PropsWithChildren } from 'react';
 
 interface Props {
-  children: React.ReactNode;
   show: boolean;
   onBackgroundClicked?: () => void;
 }
 
-export const Modal: React.VFC<Props> = props => {
-  const onBackgroundClicked = (event: React.MouseEvent) => {
+export const Modal = (props: PropsWithChildren<Props>) => {
+  const onBackgroundClicked = (event: MouseEvent) => {
     if (event.target === event.currentTarget) {
       props.onBackgroundClicked?.();
     }

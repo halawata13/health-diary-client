@@ -1,4 +1,3 @@
-import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { ChartData, ChartDataset, ChartOptions } from 'chart.js';
 import { Diary, DiaryNoData, Symptom } from '../types';
@@ -12,7 +11,7 @@ interface Props {
   symptoms: Symptom[];
 }
 
-export const ConditionGraph: React.VFC<Props> = props => {
+export const ConditionGraph = (props: Props) => {
   const labels: string[] = [];
   const conditionData: (number | null)[] = [];
   const symptomsData = new Map<number, number[]>();

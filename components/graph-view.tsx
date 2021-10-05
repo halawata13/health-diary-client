@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ConditionGraph } from "./condition-graph";
 import { css } from "@emotion/css";
 import { Diary, DiaryNoData, Symptom } from '../types';
@@ -10,7 +10,7 @@ interface Props {
   symptoms: Symptom[];
 }
 
-export const GraphView: React.VFC<Props> = props => {
+export const GraphView = (props: Props) => {
   const [ displayCondition, setDisplayCondition ] = useState(true);
   const [ displaySymptoms, setDisplaySymptoms ] = useState(new Map<number, boolean>());
 

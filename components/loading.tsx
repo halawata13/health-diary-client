@@ -1,4 +1,3 @@
-import React from 'react';
 import { Header } from './header';
 import { css } from '@emotion/css';
 import { Auth } from './auth';

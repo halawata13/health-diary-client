@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from "@emotion/css";
 import { variables } from "../styles/variables";
 import { useForm } from 'react-hook-form';
@@ -16,7 +15,7 @@ export interface LoginFormParams {
   password: string;
 }
 
-export const LoginForm: React.VFC<Props> = props => {
+export const LoginForm = (props: Props) => {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormParams>();
   const onSubmit = handleSubmit(data => {
     props.onSubmit(data);

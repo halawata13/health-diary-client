@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Symptom, Color, colors, NewSymptom } from '../types';
 import { Button } from './button';
 import { css } from "@emotion/css";
@@ -17,7 +17,7 @@ interface Props {
 /**
  * 症状リスト
  */
-export const SymptomForm: React.VFC<Props> = props => {
+export const SymptomForm = (props: Props) => {
   const [ symptoms, setSymptoms ] = useState<(Symptom | NewSymptom)[]>(props.symptoms);
   let newSymptomId = -1;
 

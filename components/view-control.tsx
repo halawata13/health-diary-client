@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from "@emotion/css";
 import { Button } from "./button";
 import { IoBarChartOutline, IoCalendarOutline, IoListOutline } from "react-icons/io5";
@@ -15,7 +14,7 @@ interface Props {
   onViewButtonClicked: (viewType: ViewType) => void;
 }
 
-export const ViewControl: React.VFC<Props> = props => (
+export const ViewControl = (props: Props) => (
   <div className={containerStyle}>
     <Button onClick={() => props.onViewButtonClicked(ViewType.list)} className={[buttonStyle, props.selected === ViewType.list ? selectedStyle : ''].join(' ')}><IoListOutline /></Button>
     <Button onClick={() => props.onViewButtonClicked(ViewType.calendar)} className={[buttonStyle, props.selected === ViewType.calendar ? selectedStyle : ''].join(' ')}><IoCalendarOutline /></Button>

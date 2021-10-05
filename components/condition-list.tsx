@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from "@emotion/css";
 import { ConditionListItem } from "./condition-list-item";
 import { Diary, DiaryNoData } from "../types";
@@ -7,7 +6,7 @@ interface Props {
   diaries: (Diary | DiaryNoData)[];
 }
 
-export const ConditionList: React.VFC<Props> = props => {
+export const ConditionList = (props: Props) => {
   return (
     <ul className={listStyle}>
       {props.diaries.map((diary, index) => (

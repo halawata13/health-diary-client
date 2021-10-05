@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from "./button";
 import { IoCalendarClearOutline, IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 import { css } from "@emotion/css";
@@ -12,7 +12,7 @@ const now = DateTime.now();
 /**
  * 年月コントロール
  */
-export const MonthControl: React.VFC = () => {
+export const MonthControl = () => {
   const [ date, setDate ] = useRecoilState(dateState);
   const [ nextDisabled, setNextDisabled ] = useState(false);
   const [ showForm, setShowForm ] = useState(false);

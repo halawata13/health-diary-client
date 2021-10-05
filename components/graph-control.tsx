@@ -1,4 +1,3 @@
-import React from 'react';
 import { Diary, DiaryNoData, Symptom } from '../types';
 
 interface Props {
@@ -6,7 +5,7 @@ interface Props {
   symptoms: Symptom[];
 }
 
-export const GraphControl: React.VFC<Props> = props => {
+export const GraphControl = (props: Props) => {
 
 
   return (

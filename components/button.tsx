@@ -1,15 +1,14 @@
-import React from 'react';
+import { ButtonHTMLAttributes, DetailedHTMLProps, PropsWithChildren } from 'react';
 import { css } from "@emotion/css";
 import { variables } from "../styles/variables";
 import { blue, grey, orange, red, teal } from "@material-ui/core/colors";
 
-interface Props extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  children: React.ReactNode;
+interface Props extends PropsWithChildren<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>> {
   variant?: 'info' | 'success' | 'warning' | 'danger' | 'normal';
   iconOnly?: boolean;
 }
 
-export const Button: React.VFC<Props> = props => {
+export const Button = (props: Props) => {
   const { variant, iconOnly, ...buttonProps } = props;
 
   return (

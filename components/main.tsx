@@ -1,11 +1,7 @@
-import React from 'react';
 import { css } from "@emotion/css";
+import { PropsWithChildren } from 'react';
 
-interface Props {
-  children: React.ReactNode;
-}
-
-export const Main: React.VFC<Props> = props => (
+export const Main = (props: PropsWithChildren<{}>) => (
   <main className={mainStyle}>{props.children}</main>
 );
 

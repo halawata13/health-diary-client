@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { UserService } from '../services/user.service';
 import { useRouter } from 'next/router';
 import { css } from "@emotion/css";
@@ -9,7 +9,7 @@ import { grey } from "@material-ui/core/colors";
 /**
  * 設定メニュー
  */
-export const ConfigMenu: React.VFC = () => {
+export const ConfigMenu = () => {
   const router = useRouter();
   const [ open, setOpen ] = useState(false);
 

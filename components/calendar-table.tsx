@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from '@emotion/css';
 import { blue, red } from '@material-ui/core/colors';
 import { variables } from "../styles/variables";
@@ -16,7 +15,7 @@ interface Props {
  *
  * @constructor
  */
-export const CalendarTable: React.VFC<Props> = props => {
+export const CalendarTable = (props: Props) => {
   const [ date, setDate ] = useRecoilState(dateState);
   const setDiaryFromModalState = useSetRecoilState(diaryFormModalState);
 

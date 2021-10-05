@@ -1,10 +1,9 @@
-import React from 'react';
 import { useRecoilState } from 'recoil';
 import { dialogState, initialDialogState } from '../states/dialog.state';
 import { css } from "@emotion/css";
 import { teal } from "@material-ui/core/colors";
 
-export const Dialog: React.VFC = () => {
+export const Dialog = () => {
   const [ dialog, setDialog ] = useRecoilState(dialogState);
 
   const onOkClicked = () => {

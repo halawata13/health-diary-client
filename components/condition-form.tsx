@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Section } from "./section";
 import { SectionHeader } from "./section-header";
 import { Button, buttonStyle } from "./button";
@@ -36,7 +36,7 @@ const defaultParams: DiaryFormParams = {
   symptoms: [],
 };
 
-export const ConditionForm: React.VFC<Props> = props => {
+export const ConditionForm = (props: Props) => {
   const date = useRecoilValue(dateState);
   const [ modalState, setDiaryFormModalState ] = useRecoilState(diaryFormModalState);
   const params = modalState.params ?? defaultParams;
