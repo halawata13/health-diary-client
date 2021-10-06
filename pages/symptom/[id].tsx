@@ -5,9 +5,8 @@ import { DateTime } from "luxon";
 import { UserService } from "../../services/user.service";
 import { useRouter } from "next/router";
 import { getFetcher } from "../../services/base.service";
-import { getErrorComponent } from "../../components/error";
-import { getLoadingComponent } from "../../components/loading";
-import { Auth } from '../../components/auth';
+import { Error } from "../../components/error";
+import { Loading } from "../../components/loading";
 import { Header } from '../../components/header';
 import { Main } from '../../components/main';
 import { Section } from '../../components/section';
@@ -16,6 +15,7 @@ import { SymptomGraph1Year } from '../../components/symptom-graph-1-year';
 import { SymptomGraphType, SymptomSelector } from '../../components/symptom-graph-selector';
 import { useState } from 'react';
 import { SymptomGraphAll } from '../../components/symptom-graph-all';
+import { RedirectToLogin } from '../../modules/RedirectToLogin';
 
 export default function Detail() {
   const user = UserService.load();
@@ -26,12 +26,19 @@ export default function Detail() {
   const url = `/symptom?id=${router.query.id}&fromYear=${from.year}&fromMonth=${from.month}&toYear=${to.year}&toMonth=${to.month}`;
   const { data: symptom, error: symptomError } = useSWR<SymptomWithDiarySymptoms, AxiosError>(url, getFetcher(url, user));
 
-  if (symptomError || user == null) {
-    return getErrorComponent(symptomError);
+  // 認証エラー時
+  if (!user || symptomError?.response?.status === 401) {
+    return <RedirectToLogin />;
   }
 
-  if (symptom === undefined) {
-    return getLoadingComponent();
+  // ローディング中
+  if (!symptom) {
+    return <Loading />;
+  }
+
+  // エラー時
+  if (symptomError) {
+    return <Error />;
   }
 
   const graph = (() => {
@@ -50,7 +57,7 @@ export default function Detail() {
   })();
 
   return (
-    <Auth>
+    <>
       <Header />
       <Main>
         <Section>
@@ -61,6 +68,6 @@ export default function Detail() {
           {graph}
         </Section>
       </Main>
-    </Auth>
+    </>
   );
 }

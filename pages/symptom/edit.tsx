@@ -5,34 +5,38 @@ import { Header } from '../../components/header';
 import { Section } from '../../components/section';
 import { Main } from "../../components/main";
 import { SectionHeader } from "../../components/section-header";
-import { Auth } from '../../components/auth';
 import { UserService } from '../../services/user.service';
 import { getFetcher } from '../../services/base.service';
-import { getErrorComponent } from '../../components/error';
 import { NewSymptom, Symptom } from '../../types';
 import { SymptomService } from '../../services/symptom.service';
 import { useSetRecoilState } from 'recoil';
 import { ToastMessageType, toastState } from '../../states/toast.state';
-import { getLoadingComponent } from '../../components/loading';
 import { AxiosError } from 'axios';
-import { Button } from "../../components/button";
-import { useRouter } from "next/router";
+import { RedirectToLogin } from '../../modules/RedirectToLogin';
+import { Loading } from '../../components/loading';
+import { Error } from '../../components/error';
 
 /**
  * 症状編集ページ
  */
 export default function Edit() {
   const user = UserService.load();
-  const router = useRouter();
   const { data: symptoms, error: symptomsError, mutate: mutateSymptoms } = useSWR<Symptom[], AxiosError>('/symptom/all', getFetcher('/symptom/all', user));
   const setToastState = useSetRecoilState(toastState);
 
-  if (symptomsError || user == null) {
-    return getErrorComponent(symptomsError);
+  // 認証エラー時
+  if (!user || symptomsError?.response?.status === 401) {
+    return <RedirectToLogin />;
   }
 
-  if (symptoms === undefined) {
-    return getLoadingComponent();
+  // ローディング中
+  if (!symptoms) {
+    return <Loading />;
+  }
+
+  // エラー時
+  if (symptomsError) {
+    return <Error />;
   }
 
   const symptomService = new SymptomService(user);
@@ -89,7 +93,7 @@ export default function Edit() {
   };
 
   return (
-    <Auth>
+    <>
       <Header />
       <Main>
         <Section>
@@ -99,6 +103,6 @@ export default function Edit() {
           <SymptomForm symptoms={symptoms} onCreate={onCreate} onUpdate={onUpdate} onDelete={onDelete} />
         </Section>
       </Main>
-    </Auth>
+    </>
   );
 }

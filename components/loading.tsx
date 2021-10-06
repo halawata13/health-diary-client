@@ -1,18 +1,17 @@
 import { Header } from './header';
 import { css } from '@emotion/css';
-import { Auth } from './auth';
 
 interface Props {
   text?: string;
 }
 
-export const getLoadingComponent = (props?: Props) => (
-  <Auth>
+export const Loading = (props?: Props) => (
+  <>
     <Header />
     <main className={containerStyle}>
       <p className={messageStyle}>{props?.text}</p>
     </main>
-  </Auth>
+  </>
 );
 
 const containerStyle = css`

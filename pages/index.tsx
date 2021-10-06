@@ -17,8 +17,8 @@ import { diaryFormModalState } from '../states/diary-form-modal.state';
 import { Diary, DiaryCreateParams, DiaryNoData, DiaryUpdateParams, Symptom } from "../types";
 import useSWR from 'swr';
 import { dateState } from '../states/date.state';
-import { getErrorComponent } from '../components/error';
-import { getLoadingComponent } from '../components/loading';
+import { Error } from '../components/error';
+import { Loading } from '../components/loading';
 import { DateTime } from 'luxon';
 import axios, { AxiosError } from 'axios';
 import { environment } from '../config/environment';
@@ -26,8 +26,8 @@ import { UserService } from '../services/user.service';
 import { DiaryService } from '../services/diary.service';
 import { getColorAtRandom } from '../services/color.service';
 import { ToastMessageType, toastState } from '../states/toast.state';
-import { Auth } from '../components/auth';
 import { getConfig, getFetcher } from '../services/base.service';
+import { RedirectToLogin } from '../modules/RedirectToLogin';
 
 /**
  * 記録閲覧ページ
@@ -80,16 +80,19 @@ export default function Index() {
     return data;
   }, [date, diaries]);
 
-  if (symptomsError || diariesError) {
-    return getErrorComponent(symptomsError ?? diariesError);
+  // 認証エラー時
+  if (!user || symptomsError?.response?.status === 401 || diariesError?.response?.status === 401) {
+    return <RedirectToLogin />;
   }
 
+  // ローディング中
   if (!symptoms || !diaries) {
-    return getLoadingComponent();
+    return <Loading />;
   }
 
-  if (!user) {
-    return getErrorComponent();
+  // エラー時
+  if (symptomsError || diariesError) {
+    return <Error />;
   }
 
   const diaryService = new DiaryService(user);
@@ -135,7 +138,7 @@ export default function Index() {
   };
 
   return (
-    <Auth>
+    <>
       <Header />
       <Main>
         <Section>
@@ -155,6 +158,6 @@ export default function Index() {
       </Modal>
       <Dialog />
       <Toast />
-    </Auth>
+    </>
   );
 }
