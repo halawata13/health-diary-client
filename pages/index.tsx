@@ -38,10 +38,10 @@ export default function Index() {
   const [ diaryModalFormState, setDiaryModalFormState ] = useRecoilState(diaryFormModalState);
   const setToastState = useSetRecoilState(toastState);
   const user = UserService.load();
-  const { data: symptoms, error: symptomsError, mutate: mutateSymptoms } = useSWR<Symptom[], AxiosError>('/symptom/all', getFetcher('/symptom/all', user));
+  const { data: symptoms, error: symptomsError, mutate: mutateSymptoms } = useSWR<Symptom[], AxiosError>('/symptom/all', getFetcher<Symptom[]>('/symptom/all', user));
   const { data: diaries, error: diariesError, mutate: mutateDiaries } = useSWR<Diary[], AxiosError>(
     `/diary?year=${date.year}&month=${date.month}`,
-    args => axios.get(environment.apiUrl + args, getConfig(user)).then(res => {
+    args => axios.get<Diary[]>(environment.apiUrl + args, getConfig(user)).then(res => {
       return res.data.map((diary: any) => ({
         ...diary,
         date: DateTime.fromFormat(diary.date, 'yyyy-MM-dd'),

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { User } from '../types';
 import { environment } from '../config/environment';
 
@@ -11,8 +11,9 @@ export class UserService {
       username,
       password,
     };
+    type Params = typeof params;
 
-    return axios.post<User>(`${environment.apiUrl}/auth/login`, params).then(res => res.data);
+    return axios.post<Params, AxiosResponse<User>>(`${environment.apiUrl}/auth/login`, params).then(res => res.data);
   }
 
   public static save(user: User, useSessionStorage = true) {

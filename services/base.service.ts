@@ -1,5 +1,5 @@
 import { User } from '../types';
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { environment } from '../config/environment';
 
 /**
@@ -18,8 +18,8 @@ export default abstract class BaseService {
   }
 }
 
-export const getFetcher = (url: string, user: User | null) => {
-  return () => axios.get(environment.apiUrl + url, getConfig(user)).then(res => res.data);
+export const getFetcher = <T>(url: string, user: User | null) => {
+  return () => axios.get<T>(environment.apiUrl + url, getConfig(user)).then(res => res.data);
 };
 
 export const getConfig = (user: User | null): AxiosRequestConfig => {
