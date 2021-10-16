@@ -15,7 +15,7 @@ export const SymptomGraphAll = (props: Props) => {
   const now = DateTime.now();
   let current = DateTime.fromISO(props.symptom.diarySymptoms[0].date);
   while (true) {
-    const label = current.toFormat('yyyy年MM月');
+    const label = current.toFormat('yyyy年M月');
     parsed.set(label, 0);
 
     if (current.year === now.year && current.month === now.month) {
@@ -26,7 +26,7 @@ export const SymptomGraphAll = (props: Props) => {
   }
 
   props.symptom.diarySymptoms.forEach(ds => {
-    const dateLabel = DateTime.fromISO(ds.date).toFormat('yyyy年MM月');
+    const dateLabel = DateTime.fromISO(ds.date).toFormat('yyyy年M月');
     parsed.set(dateLabel, (parsed.get(dateLabel) ?? 0) + 1);
   });
 

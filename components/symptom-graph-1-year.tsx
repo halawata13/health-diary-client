@@ -18,7 +18,7 @@ export const SymptomGraph1Year = (props: Props) => {
   while (true) {
     current = current.plus({ months: 1 });
 
-    const label = current.toFormat('yyyy年MM月');
+    const label = current.toFormat('yyyy年M月');
     parsed.set(label, 0);
 
     if (current.year === props.to.year && current.month === props.to.month) {
@@ -27,7 +27,7 @@ export const SymptomGraph1Year = (props: Props) => {
   }
 
   props.symptom.diarySymptoms.forEach(ds => {
-    const dateLabel = DateTime.fromISO(ds.date).toFormat('yyyy年MM月');
+    const dateLabel = DateTime.fromISO(ds.date).toFormat('yyyy年M月');
     parsed.set(dateLabel, (parsed.get(dateLabel) ?? 0) + 1);
   });
 

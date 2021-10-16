@@ -16,6 +16,7 @@ import { SymptomGraphType, SymptomSelector } from '../../components/symptom-grap
 import { useState } from 'react';
 import { SymptomGraphAll } from '../../components/symptom-graph-all';
 import { RedirectToLogin } from '../../modules/RedirectToLogin';
+import { SymptomGraphMonthRate } from "../../components/symptom-graph-month-rate";
 
 export default function Detail() {
   const user = UserService.load();
@@ -47,12 +48,15 @@ export default function Detail() {
     }
 
     switch (type) {
-      case 'all':
-        return <SymptomGraphAll symptom={symptom} />;
-
       case 'oneYear':
-      default:
         return <SymptomGraph1Year from={from} to={to} symptom={symptom} />;
+
+      case 'monthRate':
+        return <SymptomGraphMonthRate symptom={symptom} />;
+
+      case 'all':
+      default:
+        return <SymptomGraphAll symptom={symptom} />;
     }
   })();
 
