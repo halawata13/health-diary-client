@@ -17,6 +17,7 @@ import { useState } from 'react';
 import { SymptomGraphAll } from '../../components/symptom-graph-all';
 import { RedirectToLogin } from '../../modules/RedirectToLogin';
 import { SymptomGraphMonthRate } from "../../components/symptom-graph-month-rate";
+import { SymptomGraphAppearance } from "../../components/symptom-graph-appearance";
 
 export default function Detail() {
   const user = UserService.load();
@@ -53,6 +54,9 @@ export default function Detail() {
 
       case 'monthRate':
         return <SymptomGraphMonthRate symptom={symptom} />;
+
+      case 'monthAppearance':
+        return <SymptomGraphAppearance symptom={symptom} />;
 
       case 'all':
       default:

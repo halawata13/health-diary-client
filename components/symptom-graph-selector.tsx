@@ -1,7 +1,7 @@
 import { css } from '@emotion/css';
 import { variables } from '../styles/variables';
 
-const symptomGraphTypes = ['oneYear', 'all', 'monthRate'] as const;
+const symptomGraphTypes = ['oneYear', 'all', 'monthRate', 'monthAppearance'] as const;
 export type SymptomGraphType = typeof symptomGraphTypes[number];
 
 interface Props {
@@ -13,7 +13,8 @@ export const SymptomSelector = (props: Props) => {
     <select onChange={ev => props.onChange(ev.target.value as SymptomGraphType)} className={colorSelectStyle}>
       <option value={symptomGraphTypes[0]}>過去一年の出現回数</option>
       <option value={symptomGraphTypes[1]}>全期間の出現回数</option>
-      <option value={symptomGraphTypes[2]}>月当たりの症状重症度平均</option>
+      <option value={symptomGraphTypes[2]}>月当たりの重症度平均</option>
+      <option value={symptomGraphTypes[3]}>月当たりの出現率</option>
     </select>
   )
 };
