@@ -20,22 +20,40 @@ export const ConfigMenu = () => {
   };
 
   return (
-    <div className={containerStyle}>
-      <button onClick={() => setOpen(!open)} className={buttonStyle}>
-        <IoPersonCircle className={personIconStyle} />
-        <IoCaretDown className={caretIconStyle} />
-      </button>
-      <ul className={[listStyle, open ? '-open' : ''].join(' ')}>
-        <li className={itemStyle}>
-          <a className={anchorStyle} onClick={() => onLogoutClicked()}>ログアウト</a>
-        </li>
-      </ul>
-    </div>
+    <>
+      <div className={[bgStyle, open ? '-open' : ''].join(' ')} onClick={() => setOpen(false)} />
+      <div className={containerStyle}>
+        <button onClick={() => setOpen(!open)} className={buttonStyle}>
+          <IoPersonCircle className={personIconStyle} />
+          <IoCaretDown className={caretIconStyle} />
+        </button>
+        <ul className={[listStyle, open ? '-open' : ''].join(' ')}>
+          <li className={itemStyle}>
+            <a className={anchorStyle} onClick={() => onLogoutClicked()}>ログアウト</a>
+          </li>
+        </ul>
+      </div>
+    </>
   );
 };
 
+const bgStyle = css`
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+
+  &.-open {
+    pointer-events: auto;
+  }
+`;
+
 const containerStyle = css`
   position: relative;
+  z-index: 2;
   padding: 0 1.2rem;
 `;
 
