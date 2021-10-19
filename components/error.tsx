@@ -3,6 +3,7 @@ import { css } from '@emotion/css';
 import { Button } from './button';
 import { Section } from './section';
 import { Main } from './main';
+import { variables } from "../styles/variables";
 
 interface Props {
   text?: string;
@@ -29,10 +30,11 @@ const containerStyle = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1.6rem;
+  padding: 1.6rem 1.6rem 3.2rem;
 `;
 
 const messageStyle = css`
-  margin: 0 0 2em 0;
+  margin: 1em 0 2em 0;
   font-size: 2rem;
+  color: ${variables.colorTextDark};
 `;
