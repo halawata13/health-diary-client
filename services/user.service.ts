@@ -16,7 +16,7 @@ export class UserService {
     return axios.post<Params, AxiosResponse<User>>(`${environment.apiUrl}/auth/login`, params).then(res => res.data);
   }
 
-  public static save(user: User, useSessionStorage = true) {
+  public static save(user: User, useSessionStorage = false) {
     try {
       if (useSessionStorage) {
         window.sessionStorage.setItem('user', JSON.stringify(user));
@@ -32,7 +32,7 @@ export class UserService {
     }
   }
 
-  public static load(useSessionStorage = true) {
+  public static load(useSessionStorage = false) {
     try {
       if (useSessionStorage) {
         const json = window.sessionStorage.getItem('user');
@@ -48,7 +48,7 @@ export class UserService {
     }
   }
 
-  public static delete(useSessionStorage = true): boolean {
+  public static delete(useSessionStorage = false): boolean {
     try {
       if (useSessionStorage) {
         window.sessionStorage.removeItem('user');
@@ -61,14 +61,6 @@ export class UserService {
     } catch (err) {
       console.error(err);
       return false;
-    }
-  }
-
-  public static isLogin(useSessionStorage = true) {
-    if (useSessionStorage) {
-      return window.sessionStorage.getItem('user') !== null;
-    } else {
-      return window.localStorage.getItem('user') !== null;
     }
   }
 }
