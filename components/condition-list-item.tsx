@@ -87,7 +87,12 @@ const itemStyle = css`
   border-bottom: solid 1px ${variables.colorBorder};
   color: ${variables.colorTextDark};
   
+  &:first-child {
+    border-radius: 0.8rem 0.8rem 0 0;
+  }
+  
   &:last-child {
+    border-radius: 0 0 0.8rem 0.8rem;
     border-bottom: none;
   }
   
@@ -106,6 +111,13 @@ const itemStyle = css`
   &.-so-bad {
     background-color: ${red["100"]};
   }
+
+  &.-so-good,
+  &.-good,
+  &.-bad,
+  &.-so-bad {
+    border-bottom-color: #fff;
+  }
 `;
 
 const infoStyle = css`
@@ -115,6 +127,13 @@ const infoStyle = css`
   width: 10rem;
   margin-right: 1.6rem;
   border-right: solid 1px ${variables.colorBorder};
+
+  .-so-good &,
+  .-good &,
+  .-bad &,
+  .-so-bad & {
+    border-right-color: #fff;
+  }
 `;
 
 const dateStyle = css`

@@ -23,7 +23,7 @@ export const GraphView = (props: Props) => {
       }
 
       diary.symptoms.forEach((s, i) => {
-        displaySymptoms.set(s.symptomId, i === 0);
+        displaySymptoms.set(s.symptomId, true);
       });
     });
 
