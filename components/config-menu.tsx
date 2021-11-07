@@ -3,13 +3,14 @@ import { UserService } from '../services/user.service';
 import { useRouter } from 'next/router';
 import { css } from "@emotion/css";
 import { variables } from "../styles/variables";
-import { IoCaretDown, IoPersonCircle } from "react-icons/io5";
+import { IoCaretDown, IoLogOutOutline, IoPersonCircle } from "react-icons/io5";
 import { grey } from "@material-ui/core/colors";
 
 /**
  * 設定メニュー
  */
 export const ConfigMenu = () => {
+  const user = UserService.load();
   const router = useRouter();
   const [ open, setOpen ] = useState(false);
 
@@ -28,8 +29,15 @@ export const ConfigMenu = () => {
           <IoCaretDown className={caretIconStyle} />
         </button>
         <ul className={[listStyle, open ? '-open' : ''].join(' ')}>
+          <li className={userItemStyle}>
+            <IoPersonCircle className={personIconStyle} />
+            {user?.name}
+          </li>
           <li className={itemStyle}>
-            <a className={anchorStyle} onClick={() => onLogoutClicked()}>ログアウト</a>
+            <a className={anchorStyle} onClick={() => onLogoutClicked()}>
+              <IoLogOutOutline className={personIconStyle} />
+              ログアウト
+            </a>
           </li>
         </ul>
       </div>
@@ -83,8 +91,23 @@ const itemStyle = css`
   cursor: pointer;
 `;
 
+const userItemStyle = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.4rem;
+  margin-bottom: 0.8rem;
+  padding: 0.8rem 0 1.2rem;
+  border-bottom: solid 1px ${variables.colorBorder};
+  font-weight: bold;
+  font-size: 1.4rem;
+`;
+
 const anchorStyle = css`
-  display: block;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 0.4rem;
   min-height: 38px;
   padding: 1.2rem 1.6rem;
   text-decoration: none;

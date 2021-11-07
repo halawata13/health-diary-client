@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { UserService } from "../services/user.service";
+import { IoBarChartOutline, IoListOutline } from "react-icons/io5";
 
 /**
  * ヘッダ
@@ -27,8 +28,14 @@ export const Header = memo(() => {
         </h1>
         {user && (
           <nav className={navStyle}>
-            <Link href={'/'} passHref={true}><a className={[navItemStyle, router.pathname === '/' ? navItemSelectedStyle : ''].join(' ')}>日々の記録</a></Link>
-            <Link href={'/symptom'} passHref={true}><a className={[navItemStyle, router.pathname.startsWith('/symptom') ? navItemSelectedStyle : ''].join(' ')}>症状一覧</a></Link>
+            <Link href={'/'} passHref={true}><a className={[navItemStyle, router.pathname === '/' ? navItemSelectedStyle : ''].join(' ')}>
+              <IoBarChartOutline className={navItemIconStyle} />
+              日々の記録
+            </a></Link>
+            <Link href={'/symptom'} passHref={true}><a className={[navItemStyle, router.pathname.startsWith('/symptom') ? navItemSelectedStyle : ''].join(' ')}>
+              <IoListOutline className={navItemIconStyle} />
+              症状一覧
+            </a></Link>
           </nav>
         )}
       </div>
@@ -77,8 +84,15 @@ const navStyle = css`
 `;
 
 const navItemStyle = css`
+  display: flex;
+  align-items: center;
+  column-gap: 0.4rem;
   margin-left: 12px;
   color: ${variables.colorTextDark};
+`;
+
+const navItemIconStyle = css`
+  font-size: 1.8rem;
 `;
 
 const navItemSelectedStyle = css`
