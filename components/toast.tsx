@@ -6,6 +6,9 @@ import { blue, orange, red, teal } from "@material-ui/core/colors";
 
 let hiddenTimer: number;
 
+/**
+ * トースト
+ */
 export const Toast = () => {
   const [ toast, setToast ] = useRecoilState(toastState);
 

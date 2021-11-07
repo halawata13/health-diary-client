@@ -11,6 +11,9 @@ interface Props {
   diary: Diary | DiaryNoData;
 }
 
+/**
+ * コンディションリストアイテム
+ */
 export const ConditionListItem = (props: Props) => {
   const setDate = useSetRecoilState(dateState);
   const setDiaryFromModalState = useSetRecoilState(diaryFormModalState);

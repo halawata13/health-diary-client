@@ -11,6 +11,9 @@ interface Props {
   symptoms: Symptom[];
 }
 
+/**
+ * コンディショングラフ
+ */
 export const ConditionGraph = (props: Props) => {
   const labels: string[] = [];
   const conditionData: (number | null)[] = [];

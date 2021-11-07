@@ -15,6 +15,9 @@ export interface LoginFormParams {
   password: string;
 }
 
+/**
+ * ログインフォーム
+ */
 export const LoginForm = (props: Props) => {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormParams>();
   const onSubmit = handleSubmit(data => {

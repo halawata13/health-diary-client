@@ -10,6 +10,9 @@ interface Props {
   symptoms: Symptom[];
 }
 
+/**
+ * グラフビュー
+ */
 export const GraphView = (props: Props) => {
   const [ displayCondition, setDisplayCondition ] = useState(true);
   const [ displaySymptoms, setDisplaySymptoms ] = useState(new Map<number, boolean>());

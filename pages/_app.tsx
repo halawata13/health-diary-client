@@ -1,4 +1,3 @@
-import React from 'react';
 import { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import { SWRConfig, SWRConfiguration } from "swr";
@@ -11,7 +10,6 @@ import { Container } from "../components/container";
 
 const swrConfig: SWRConfiguration = {
   fetcher: args => axios.get(environment.apiUrl + args).then(res => res.data),
-  revalidateOnFocus: false,
 };
 
 export default function App(props: AppProps) {
@@ -19,7 +17,7 @@ export default function App(props: AppProps) {
   const CSRComponent = dynamic(() => import('../components/csr-component'), { ssr: false });
 
   return (
-    <React.Fragment>
+    <>
       <CSRComponent>
         <SWRConfig value={swrConfig}>
           <RecoilRoot>
@@ -29,6 +27,6 @@ export default function App(props: AppProps) {
           </RecoilRoot>
         </SWRConfig>
       </CSRComponent>
-    </React.Fragment>
+    </>
   );
 }

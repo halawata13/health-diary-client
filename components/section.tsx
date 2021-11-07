@@ -2,6 +2,9 @@ import { PropsWithChildren } from 'react';
 import { css } from "@emotion/css";
 import { variables } from "../styles/variables";
 
+/**
+ * セクション
+ */
 export const Section = (props: PropsWithChildren<{}>) => (
   <section className={sectionStyle}>{props.children}</section>
 );

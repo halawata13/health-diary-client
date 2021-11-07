@@ -5,11 +5,11 @@ interface Props {
   diaries: (Diary | DiaryNoData)[];
 }
 
+/**
+ * カレンダービュー
+ */
 export const CalendarView = (props: Props) => {
-  console.log(props.diaries);
   return (
-    <>
-      <CalendarTable diaries={props.diaries} />
-    </>
+    <CalendarTable diaries={props.diaries} />
   );
 };

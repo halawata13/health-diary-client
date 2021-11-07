@@ -11,6 +11,9 @@ interface Props {
   symptom: SymptomWithDiarySymptoms;
 }
 
+/**
+ * 過去一年の出現回数グラフ
+ */
 export const SymptomGraph1Year = (props: Props) => {
   const parsed = new Map<string, number>();
 

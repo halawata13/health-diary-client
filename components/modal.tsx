@@ -6,6 +6,9 @@ interface Props {
   onBackgroundClicked?: () => void;
 }
 
+/**
+ * モーダル
+ */
 export const Modal = (props: PropsWithChildren<Props>) => {
   const onBackgroundClicked = (event: MouseEvent) => {
     if (event.target === event.currentTarget) {

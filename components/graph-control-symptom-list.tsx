@@ -18,6 +18,9 @@ interface SymptomItem {
   count: number;
 }
 
+/**
+ * グラフ選択症状リスト
+ */
 export const GraphControlSymptomList = (props: Props) => {
   const symptomMap = new Map<number, Symptom>();
   props.symptoms.forEach(symptom => {

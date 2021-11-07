@@ -9,6 +9,9 @@ interface Props {
   symptom: SymptomWithDiarySymptoms;
 }
 
+/**
+ * 全期間の出現回数グラフ
+ */
 export const SymptomGraphAll = (props: Props) => {
   const parsed = new Map<string, number>();
 

@@ -8,6 +8,9 @@ interface Props {
   onChange: (type: SymptomGraphType) => void;
 }
 
+/**
+ * 症状詳細グラフ選択
+ */
 export const SymptomSelector = (props: Props) => {
   return (
     <select onChange={ev => props.onChange(ev.target.value as SymptomGraphType)} className={colorSelectStyle}>

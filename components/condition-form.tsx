@@ -36,6 +36,9 @@ const defaultParams: DiaryFormParams = {
   symptoms: [],
 };
 
+/**
+ * カレンダーフォーム
+ */
 export const ConditionForm = (props: Props) => {
   const date = useRecoilValue(dateState);
   const [ modalState, setDiaryFormModalState ] = useRecoilState(diaryFormModalState);

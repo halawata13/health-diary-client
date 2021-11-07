@@ -10,6 +10,9 @@ interface Props {
   symptoms: Symptom[];
 }
 
+/**
+ * 症状リスト
+ */
 export const SymptomList = (props: Props) => {
   return (
     <div className={containerStyle}>

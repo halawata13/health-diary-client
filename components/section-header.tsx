@@ -1,6 +1,9 @@
 import { css } from "@emotion/css";
 import { PropsWithChildren } from 'react';
 
+/**
+ * セクションヘッダ
+ */
 export const SectionHeader = (props: PropsWithChildren<{}>) => (
   <header className={headerStyle}>{props.children}</header>
 );

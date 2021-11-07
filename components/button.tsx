@@ -8,6 +8,9 @@ interface Props extends PropsWithChildren<DetailedHTMLProps<ButtonHTMLAttributes
   iconOnly?: boolean;
 }
 
+/**
+ * ボタン
+ */
 export const Button = (props: Props) => {
   const { variant, iconOnly, ...buttonProps } = props;
 

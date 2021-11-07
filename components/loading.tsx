@@ -5,6 +5,9 @@ interface Props {
   text?: string;
 }
 
+/**
+ * ローディング
+ */
 export const Loading = (props?: Props) => (
   <>
     <Header />

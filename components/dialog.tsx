@@ -3,6 +3,9 @@ import { dialogState, initialDialogState } from '../states/dialog.state';
 import { css } from "@emotion/css";
 import { teal } from "@material-ui/core/colors";
 
+/**
+ * ダイアログ
+ */
 export const Dialog = () => {
   const [ dialog, setDialog ] = useRecoilState(dialogState);
 

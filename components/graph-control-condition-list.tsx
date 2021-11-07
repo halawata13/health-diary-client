@@ -10,6 +10,9 @@ interface Props {
   displayCondition: boolean;
 }
 
+/**
+ * グラフ選択コンディションリスト
+ */
 export const GraphControlConditionList = (props: Props) => {
   const values = props.diaries.filter(d => 'id' in d).map(d => ('id' in d) ? d.condition : 0);
 

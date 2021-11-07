@@ -9,6 +9,9 @@ interface Props {
   text?: string;
 }
 
+/**
+ * エラー
+ */
 export const Error = (props: Props) => {
   return (
     <>

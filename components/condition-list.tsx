@@ -6,6 +6,9 @@ interface Props {
   diaries: (Diary | DiaryNoData)[];
 }
 
+/**
+ * コンディションリスト
+ */
 export const ConditionList = (props: Props) => {
   return (
     <ul className={listStyle}>

@@ -9,6 +9,9 @@ interface Props {
 
 const now = DateTime.now();
 
+/**
+ * リストビュー
+ */
 export const ListView = (props: Props) => {
   const diaries = props.diaries.filter(diary => now.month !== diary.date.month || now.day >= diary.date.day).reverse();
 

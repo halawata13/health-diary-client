@@ -14,6 +14,9 @@ interface Props {
   onViewButtonClicked: (viewType: ViewType) => void;
 }
 
+/**
+ * ビュー選択
+ */
 export const ViewControl = (props: Props) => (
   <div className={containerStyle}>
     <Button onClick={() => props.onViewButtonClicked(ViewType.list)} className={[buttonStyle, props.selected === ViewType.list ? selectedStyle : ''].join(' ')}><IoListOutline /></Button>

@@ -15,7 +15,7 @@ interface Props {
 }
 
 /**
- * 症状リスト
+ * 症状フォーム
  */
 export const SymptomForm = (props: Props) => {
   const [ symptoms, setSymptoms ] = useState<(Symptom | NewSymptom)[]>(props.symptoms);
