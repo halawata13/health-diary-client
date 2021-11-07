@@ -4,7 +4,6 @@ import { SymptomForm } from '../../components/symptom-form';
 import { Header } from '../../components/header';
 import { Section } from '../../components/section';
 import { Main } from "../../components/main";
-import { SectionHeader } from "../../components/section-header";
 import { UserService } from '../../services/user.service';
 import { getFetcher } from '../../services/base.service';
 import { NewSymptom, Symptom } from '../../types';
@@ -15,6 +14,7 @@ import { AxiosError } from 'axios';
 import { RedirectToLogin } from '../../modules/RedirectToLogin';
 import { Loading } from '../../components/loading';
 import { Error } from '../../components/error';
+import { SymptomEditHeader } from "../../components/symptom-edit-header";
 
 /**
  * 症状編集ページ
@@ -97,9 +97,7 @@ export default function Edit() {
       <Header />
       <Main>
         <Section>
-          <SectionHeader>
-            <h1>症状一覧</h1>
-          </SectionHeader>
+          <SymptomEditHeader />
           <SymptomForm symptoms={symptoms} onCreate={onCreate} onUpdate={onUpdate} onDelete={onDelete} />
         </Section>
       </Main>

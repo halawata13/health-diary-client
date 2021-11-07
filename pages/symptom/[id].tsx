@@ -10,14 +10,14 @@ import { Loading } from "../../components/loading";
 import { Header } from '../../components/header';
 import { Main } from '../../components/main';
 import { Section } from '../../components/section';
-import { SectionHeader } from '../../components/section-header';
 import { SymptomGraph1Year } from '../../components/symptom-graph-1-year';
-import { SymptomGraphType, SymptomSelector } from '../../components/symptom-graph-selector';
+import { SymptomGraphType } from '../../components/symptom-graph-selector';
 import { useState } from 'react';
 import { SymptomGraphAll } from '../../components/symptom-graph-all';
 import { RedirectToLogin } from '../../modules/RedirectToLogin';
 import { SymptomGraphMonthRate } from "../../components/symptom-graph-month-rate";
 import { SymptomGraphAppearance } from "../../components/symptom-graph-appearance";
+import { SymptomDetailHeader } from "../../components/symptom-detail-header";
 
 export default function Detail() {
   const user = UserService.load();
@@ -69,10 +69,7 @@ export default function Detail() {
       <Header />
       <Main>
         <Section>
-          <SectionHeader>
-            <h1>{symptom.name}</h1>
-            <SymptomSelector onChange={type => setType(type)} />
-          </SectionHeader>
+          <SymptomDetailHeader name={symptom.name} onChange={type => setType(type)} />
           {graph}
         </Section>
       </Main>
