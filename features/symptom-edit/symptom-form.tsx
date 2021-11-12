@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Symptom, Color, colors, NewSymptom } from '../types';
-import { Button } from './button';
+import { Symptom, Color, colors, NewSymptom } from '../../types';
+import { Button } from '../../components/button';
 import { css } from "@emotion/css";
-import { inputStyle } from "../styles/shared/form";
-import { variables } from "../styles/variables";
+import { inputStyle } from "../../styles/shared/form";
+import { variables } from "../../styles/variables";
 import { IoAddCircleOutline, IoTrashOutline } from "react-icons/io5";
-import { getColor } from '../services/color.service';
+import { getColor } from '../../services/color.service';
 
 interface Props {
   symptoms: Symptom[];

@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
-import { Section } from "./section";
-import { SectionHeader } from "./section-header";
-import { Button, buttonStyle } from "./button";
+import { Section } from "../../components/section";
+import { SectionHeader } from "../../components/section-header";
+import { Button, buttonStyle } from "../../components/button";
 import { css } from "@emotion/css";
-import { inputStyle } from "../styles/shared/form";
-import { variables } from "../styles/variables";
+import { inputStyle } from "../../styles/shared/form";
+import { variables } from "../../styles/variables";
 import { useFieldArray, useForm } from 'react-hook-form';
-import { Symptom } from '../types';
+import { Symptom } from '../../types';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { diaryFormModalState } from '../states/diary-form-modal.state';
+import { diaryFormModalState } from '../../states/diary-form-modal.state';
 import { blue } from "@material-ui/core/colors";
 import { IoAddCircle, IoTrashOutline } from "react-icons/io5";
-import { dateState } from '../states/date.state';
+import { dateState } from '../../states/date.state';
 
 export interface DiaryFormParams {
   id?: number;

@@ -1,9 +1,9 @@
-import { Symptom } from "../types";
+import { Symptom } from "../../types";
 import { css } from "@emotion/css";
 import { grey } from "@material-ui/core/colors";
-import { getColor } from "../services/color.service";
+import { getColor } from "../../services/color.service";
 import { IoChevronForwardOutline } from 'react-icons/io5';
-import { variables } from '../styles/variables';
+import { variables } from '../../styles/variables';
 import Link from 'next/link';
 
 interface Props {

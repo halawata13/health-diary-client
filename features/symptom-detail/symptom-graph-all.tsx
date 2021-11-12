@@ -1,32 +1,31 @@
 import { ChartData, ChartDataset, ChartOptions } from 'chart.js';
 import { css } from '@emotion/css';
 import { Bar } from 'react-chartjs-2';
-import { SymptomWithDiarySymptoms } from '../types';
+import { SymptomWithDiarySymptoms } from '../../types';
 import { DateTime } from 'luxon';
-import { getColor } from '../services/color.service';
+import { getColor } from '../../services/color.service';
 
 interface Props {
-  from: DateTime;
-  to: DateTime;
   symptom: SymptomWithDiarySymptoms;
 }
 
 /**
- * 過去一年の出現回数グラフ
+ * 全期間の出現回数グラフ
  */
-export const SymptomGraph1Year = (props: Props) => {
+export const SymptomGraphAll = (props: Props) => {
   const parsed = new Map<string, number>();
 
-  let current = props.from;
+  const now = DateTime.now();
+  let current = DateTime.fromISO(props.symptom.diarySymptoms[0].date);
   while (true) {
-    current = current.plus({ months: 1 });
-
     const label = current.toFormat('yyyy年M月');
     parsed.set(label, 0);
 
-    if (current.year === props.to.year && current.month === props.to.month) {
+    if (current.year === now.year && current.month === now.month) {
       break;
     }
+
+    current = current.plus({ months: 1 });
   }
 
   props.symptom.diarySymptoms.forEach(ds => {

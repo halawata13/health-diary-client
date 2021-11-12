@@ -1,11 +1,11 @@
 import { css } from "@emotion/css";
-import { variables } from "../styles/variables";
+import { variables } from "../../../styles/variables";
 import { blue, grey, red } from "@material-ui/core/colors";
 import { useSetRecoilState } from "recoil";
-import { diaryFormModalState } from "../states/diary-form-modal.state";
-import { Diary, DiaryNoData } from "../types";
-import { dateState } from '../states/date.state';
-import { getColor } from '../services/color.service';
+import { diaryFormModalState } from "../../../states/diary-form-modal.state";
+import { Diary, DiaryNoData } from "../../../types";
+import { dateState } from '../../../states/date.state';
+import { getColor } from '../../../services/color.service';
 
 interface Props {
   diary: Diary | DiaryNoData;

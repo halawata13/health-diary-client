@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Button } from "./button";
+import { Button } from "../../components/button";
 import { IoCalendarClearOutline, IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 import { css } from "@emotion/css";
-import { variables } from "../styles/variables";
+import { variables } from "../../styles/variables";
 import { useRecoilState } from 'recoil';
-import { dateState } from '../states/date.state';
+import { dateState } from '../../states/date.state';
 import { DateTime } from 'luxon';
 
 const now = DateTime.now();

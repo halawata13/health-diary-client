@@ -4,14 +4,14 @@ import { Header } from "../components/header";
 import { Main } from "../components/main";
 import { Section } from "../components/section";
 import { SectionHeader } from "../components/section-header";
-import { MonthControl } from "../components/month-control";
-import { ViewControl, ViewType } from "../components/view-control";
-import { GraphView } from "../components/graph-view";
+import { MonthControl } from "../features/condition-view/month-control";
+import { ViewControl, ViewType } from "../features/condition-view/view-control";
+import { GraphView } from "../features/condition-view/condition-graph-view/graph-view";
 import { Modal } from "../components/modal";
-import { ConditionForm, DiaryFormParams } from "../components/condition-form";
+import { ConditionForm, DiaryFormParams } from "../features/condition-view/condition-form";
 import { useMemo, useState } from 'react';
-import { ListView } from '../components/list-view';
-import { CalendarView } from '../components/calendar-view';
+import { ListView } from '../features/condition-view/condition-list-view/list-view';
+import { CalendarView } from '../features/condition-view/condition-calendar-view/calendar-view';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { diaryFormModalState } from '../states/diary-form-modal.state';
 import { Diary, DiaryCreateParams, DiaryNoData, DiaryUpdateParams, Symptom } from "../types";
@@ -27,7 +27,7 @@ import { DiaryService } from '../services/diary.service';
 import { getColorAtRandom } from '../services/color.service';
 import { ToastMessageType, toastState } from '../states/toast.state';
 import { getConfig, getFetcher } from '../services/base.service';
-import { RedirectToLogin } from '../modules/RedirectToLogin';
+import { RedirectToLogin } from '../components/redirect-to-login';
 
 /**
  * 記録閲覧ページ

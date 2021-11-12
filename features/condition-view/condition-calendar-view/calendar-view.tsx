@@ -1,5 +1,5 @@
 import { CalendarTable } from './calendar-table';
-import { Diary, DiaryNoData } from '../types';
+import { Diary, DiaryNoData } from '../../../types';
 
 interface Props {
   diaries: (Diary | DiaryNoData)[];

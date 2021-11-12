@@ -1,5 +1,5 @@
 import { ConditionList } from "./condition-list";
-import { Diary, DiaryNoData } from "../types";
+import { Diary, DiaryNoData } from "../../../types";
 import { css } from "@emotion/css";
 import { DateTime } from 'luxon';
 

@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
-import { Button } from "./button";
+import { Button } from "../../components/button";
 import { IoBarChartOutline, IoCalendarOutline, IoListOutline } from "react-icons/io5";
-import { variables } from '../styles/variables';
+import { variables } from '../../styles/variables';
 
 export enum ViewType {
   list,

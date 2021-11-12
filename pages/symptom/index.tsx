@@ -7,11 +7,11 @@ import { UserService } from '../../services/user.service';
 import { getFetcher } from '../../services/base.service';
 import { Symptom } from '../../types';
 import { AxiosError } from 'axios';
-import { SymptomList } from "../../components/symptom-list";
-import { RedirectToLogin } from '../../modules/RedirectToLogin';
+import { SymptomList } from "../../features/symptom-list/symptom-list";
+import { RedirectToLogin } from '../../components/redirect-to-login';
 import { Loading } from '../../components/loading';
 import { Error } from '../../components/error';
-import { SymptomIndexHeader } from "../../components/symptom-index-header";
+import { SymptomIndexHeader } from "../../features/symptom-list/symptom-index-header";
 
 /**
  * 症状一覧ページ

@@ -1,6 +1,6 @@
 import React from 'react';
 import useSWR from 'swr';
-import { SymptomForm } from '../../components/symptom-form';
+import { SymptomForm } from '../../features/symptom-edit/symptom-form';
 import { Header } from '../../components/header';
 import { Section } from '../../components/section';
 import { Main } from "../../components/main";
@@ -11,10 +11,10 @@ import { SymptomService } from '../../services/symptom.service';
 import { useSetRecoilState } from 'recoil';
 import { ToastMessageType, toastState } from '../../states/toast.state';
 import { AxiosError } from 'axios';
-import { RedirectToLogin } from '../../modules/RedirectToLogin';
+import { RedirectToLogin } from '../../components/redirect-to-login';
 import { Loading } from '../../components/loading';
 import { Error } from '../../components/error';
-import { SymptomEditHeader } from "../../components/symptom-edit-header";
+import { SymptomEditHeader } from "../../features/symptom-edit/symptom-edit-header";
 
 /**
  * 症状編集ページ

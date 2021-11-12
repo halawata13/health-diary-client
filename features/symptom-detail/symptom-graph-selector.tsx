@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { variables } from '../styles/variables';
+import { variables } from '../../styles/variables';
 
 const symptomGraphTypes = ['oneYear', 'all', 'monthRate', 'monthAppearance'] as const;
 export type SymptomGraphType = typeof symptomGraphTypes[number];

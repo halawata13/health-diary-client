@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ConditionGraph } from "./condition-graph";
 import { css } from "@emotion/css";
-import { Diary, DiaryNoData, Symptom } from '../types';
+import { Diary, DiaryNoData, Symptom } from '../../../types';
 import { GraphControlConditionList } from './graph-control-condition-list';
 import { GraphControlSymptomList } from './graph-control-symptom-list';
 

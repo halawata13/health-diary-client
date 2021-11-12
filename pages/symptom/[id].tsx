@@ -10,14 +10,14 @@ import { Loading } from "../../components/loading";
 import { Header } from '../../components/header';
 import { Main } from '../../components/main';
 import { Section } from '../../components/section';
-import { SymptomGraph1Year } from '../../components/symptom-graph-1-year';
-import { SymptomGraphType } from '../../components/symptom-graph-selector';
+import { SymptomGraph1Year } from '../../features/symptom-detail/symptom-graph-1-year';
+import { SymptomGraphType } from '../../features/symptom-detail/symptom-graph-selector';
 import { useState } from 'react';
-import { SymptomGraphAll } from '../../components/symptom-graph-all';
-import { RedirectToLogin } from '../../modules/RedirectToLogin';
-import { SymptomGraphMonthRate } from "../../components/symptom-graph-month-rate";
-import { SymptomGraphAppearance } from "../../components/symptom-graph-appearance";
-import { SymptomDetailHeader } from "../../components/symptom-detail-header";
+import { SymptomGraphAll } from '../../features/symptom-detail/symptom-graph-all';
+import { RedirectToLogin } from '../../components/redirect-to-login';
+import { SymptomGraphMonthRate } from "../../features/symptom-detail/symptom-graph-month-rate";
+import { SymptomGraphAppearance } from "../../features/symptom-detail/symptom-graph-appearance";
+import { SymptomDetailHeader } from "../../features/symptom-detail/symptom-detail-header";
 
 export default function Detail() {
   const user = UserService.load();

@@ -1,8 +1,8 @@
 import { css } from "@emotion/css";
-import { Button } from "./button";
+import { Button } from "../../components/button";
 import { IoArrowUndoOutline } from "react-icons/io5";
 import { useRouter } from "next/router";
-import { SectionHeader } from "./section-header";
+import { SectionHeader } from "../../components/section-header";
 import { SymptomGraphType, SymptomSelector } from "./symptom-graph-selector";
 
 interface Props {

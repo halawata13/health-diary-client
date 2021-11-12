@@ -1,7 +1,7 @@
 import { Line } from 'react-chartjs-2';
 import { ChartData, ChartDataset, ChartOptions } from 'chart.js';
-import { Diary, DiaryNoData, Symptom } from '../types';
-import { getColor } from '../services/color.service';
+import { Diary, DiaryNoData, Symptom } from '../../../types';
+import { getColor } from '../../../services/color.service';
 import { css } from '@emotion/css';
 
 interface Props {

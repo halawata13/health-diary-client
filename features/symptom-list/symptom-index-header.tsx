@@ -1,5 +1,5 @@
-import { SectionHeader } from "./section-header";
-import { Button } from "./button";
+import { SectionHeader } from "../../components/section-header";
+import { Button } from "../../components/button";
 import React from "react";
 import { useRouter } from "next/router";
 import { IoCreateOutline } from "react-icons/io5";

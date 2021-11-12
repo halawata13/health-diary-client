@@ -1,8 +1,8 @@
 import { css } from "@emotion/css";
-import { variables } from "../styles/variables";
+import { variables } from "../../styles/variables";
 import { useForm } from 'react-hook-form';
-import { inputStyle } from "../styles/shared/form";
-import { Button } from "./button";
+import { inputStyle } from "../../styles/shared/form";
+import { Button } from "../../components/button";
 import { red } from "@material-ui/core/colors";
 
 interface Props {

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { UserService } from '../../services/user.service';
-import { LoginForm, LoginFormParams } from '../../components/login-form';
+import { LoginForm, LoginFormParams } from '../../features/login/login-form';
 import { Header } from '../../components/header';
 import { Main } from "../../components/main";
 

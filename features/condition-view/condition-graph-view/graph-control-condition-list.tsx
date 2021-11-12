@@ -1,8 +1,8 @@
 import { css } from "@emotion/css";
-import { variables } from "../styles/variables";
+import { variables } from "../../../styles/variables";
 import { grey } from "@material-ui/core/colors";
 import { IoEyeOutline } from "react-icons/io5";
-import { Diary, DiaryNoData } from '../types';
+import { Diary, DiaryNoData } from '../../../types';
 
 interface Props {
   diaries: (Diary | DiaryNoData)[];

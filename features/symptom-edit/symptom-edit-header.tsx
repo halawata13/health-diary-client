@@ -1,8 +1,8 @@
-import { Button } from "./button";
+import { Button } from "../../components/button";
 import { IoArrowUndoOutline } from "react-icons/io5";
 import { css } from "@emotion/css";
 import { useRouter } from "next/router";
-import { SectionHeader } from "./section-header";
+import { SectionHeader } from "../../components/section-header";
 
 /**
  * 症状編集画面ヘッダ

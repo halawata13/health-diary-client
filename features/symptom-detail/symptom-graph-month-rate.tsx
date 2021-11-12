@@ -1,7 +1,7 @@
-import { SymptomWithDiarySymptoms } from "../types";
+import { SymptomWithDiarySymptoms } from "../../types";
 import { DateTime } from "luxon";
 import { ChartData, ChartDataset, ChartOptions } from "chart.js";
-import { getColor } from "../services/color.service";
+import { getColor } from "../../services/color.service";
 import { Bar } from "react-chartjs-2";
 import { css } from "@emotion/css";
 
@@ -10,27 +10,31 @@ interface Props {
 }
 
 /**
- * 月当たりの出現率グラフ
+ * 月当たりの重症度平均グラフ
  */
-export const SymptomGraphAppearance = (props: Props) => {
-  const yearMonthCounts = new Map<number, Set<number>>();
+export const SymptomGraphMonthRate = (props: Props) => {
   const counts = new Map<number, number>();
+  const levels = new Map<number, number>();
   const rates = new Map<string, number>();
   let date = DateTime.fromObject({ year: 2021, month: 1, day: 1 });
 
-  // 月ごとの出現回数と年月別の出現回数を計算
+  // 重症度と出現回数を計算
   props.symptom.diarySymptoms.forEach(ds => {
-    const date = DateTime.fromISO(ds.date);
-    counts.set(date.month, (counts.get(date.month) ?? 0) + 1);
-    yearMonthCounts.set(date.month, (yearMonthCounts.get(date.month) ?? new Set()).add(date.year));
+    const month = DateTime.fromISO(ds.date).month;
+    levels.set(month, (levels.get(month) ?? 0) + ds.level);
+    counts.set(month, (counts.get(month) ?? 0) + 1);
   });
 
   Array.from(Array(12)).forEach(_ => {
     const count = counts.get(date.month) ?? 0;
-    const yearMonthCount = yearMonthCounts.get(date.month)?.size ?? 1;
+    if (count === 0) {
+      rates.set(date.toFormat('M月'), 0);
+      date = date.plus({ months: 1 });
+      return;
+    }
 
-    // 出現回数を月の日数と年月別の回数で掛けたもので割る
-    const rate = Math.round(count / date.daysInMonth * yearMonthCount * 10000) / 100;
+    // 重症度合計を出現回数で割って平均を出す
+    const rate = Math.round((levels.get(date.month) ?? 0) / count * 100) / 100;
     rates.set(date.toFormat('M月'), rate);
 
     date = date.plus({ months: 1 });
@@ -59,7 +63,7 @@ export const SymptomGraphAppearance = (props: Props) => {
       'symptom': {
         position: 'left',
         min: 0,
-        max: 100,
+        max: 10,
       },
     },
   };

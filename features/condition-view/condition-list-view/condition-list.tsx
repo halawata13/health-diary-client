@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { ConditionListItem } from "./condition-list-item";
-import { Diary, DiaryNoData } from "../types";
+import { Diary, DiaryNoData } from "../../../types";
 
 interface Props {
   diaries: (Diary | DiaryNoData)[];

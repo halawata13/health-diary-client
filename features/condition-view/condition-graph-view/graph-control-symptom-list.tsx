@@ -1,9 +1,9 @@
 import { css } from "@emotion/css";
-import { variables } from "../styles/variables";
+import { variables } from "../../../styles/variables";
 import { blue } from "@material-ui/core/colors";
 import { IoEyeOutline } from "react-icons/io5";
-import { Diary, DiaryNoData, Symptom } from '../types';
-import { getColor } from '../services/color.service';
+import { Diary, DiaryNoData, Symptom } from '../../../types';
+import { getColor } from '../../../services/color.service';
 
 interface Props {
   diaries: (Diary | DiaryNoData)[];
