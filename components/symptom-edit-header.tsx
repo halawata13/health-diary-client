@@ -1,5 +1,5 @@
 import { Button } from "./button";
-import { IoArrowUndoOutline } from "react-icons/all";
+import { IoArrowUndoOutline } from "react-icons/io5";
 import { css } from "@emotion/css";
 import { useRouter } from "next/router";
 import { SectionHeader } from "./section-header";

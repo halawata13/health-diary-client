@@ -2,7 +2,7 @@ import { SectionHeader } from "./section-header";
 import { Button } from "./button";
 import React from "react";
 import { useRouter } from "next/router";
-import { IoCreateOutline } from "react-icons/all";
+import { IoCreateOutline } from "react-icons/io5";
 
 /**
  * 症状一覧ヘッダ
