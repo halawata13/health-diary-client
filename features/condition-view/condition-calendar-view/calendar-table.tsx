@@ -68,15 +68,15 @@ export const CalendarTable = (props: Props) => {
     calendarCells[i + calendarFirstDay] = i + 1;
   }
 
-  const source = [];
+  const source: JSX.Element[] = [];
   let emptyKey = -1;
 
-  for (let i = 0; i < calendarRows; i++) {
-    const row = [];
+  Array.from(Array(calendarRows)).forEach((_, i) => {
+    const row: JSX.Element[] = [];
 
-    for (let j = 0; j < 7; j++) {
+    Array.from(Array(7)).forEach((_, j) => {
       const calendarDate = calendarCells[j + (i * 7)];
-      const key = calendarDate || emptyKey--;
+      const key = calendarDate ?? emptyKey--;
 
       const selected = calendarDate === selectedDateObj.getDate();
       const today = todayYear === calendarYear && todayMonth === calendarMonth && todayDate === calendarDate;
@@ -85,7 +85,7 @@ export const CalendarTable = (props: Props) => {
 
       if (!calendarDate) {
         row.push(<td key={key} className={tdStyle} />);
-        continue;
+        return;
       }
 
       const cellDateClass = [];
@@ -143,10 +143,10 @@ export const CalendarTable = (props: Props) => {
           </div>
         </td>
       );
-    }
+    });
 
     source.push(<tr key={i}>{row}</tr>);
-  }
+  });
 
   const week = Array.from(Array(7)).map((_, i) => {
     if (i === 0) {
@@ -208,7 +208,7 @@ const tdStyle = css`
 
 const calendarBaseStyle = css`
   position: relative;
-  
+
   & span {
     position: relative;
     z-index: 1;

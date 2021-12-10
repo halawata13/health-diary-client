@@ -54,6 +54,7 @@ export default function Index() {
     if (!diaries) {
       return [];
     }
+    console.log('useMemo');
 
     const diariesMap = new Map<number, Diary>();
     diaries.forEach(diary => diariesMap.set(diary.date.day, diary));
@@ -115,9 +116,10 @@ export default function Index() {
     try {
       if (id === undefined) {
         const diary = await diaryService.create(params);
-        diaries.push(diary);
-        diaries.sort((a, b) => a.date >= b.date ? 1 : -1);
-        await mutateDiaries(diaries);
+        console.log(diary);
+        const newDiaries = diaries.concat(diary);
+        newDiaries.sort((a, b) => a.date >= b.date ? 1 : -1);
+        await mutateDiaries(newDiaries);
 
       } else {
         const updateParams: DiaryUpdateParams = Object.assign({}, params, { id: Number(id) });
