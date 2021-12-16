@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { blue, red } from '@material-ui/core/colors';
+import { blue, grey, red } from '@material-ui/core/colors';
 import { variables } from "../../../styles/variables";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { diaryFormModalState } from "../../../states/diary-form-modal.state";
@@ -88,7 +88,7 @@ export const CalendarTable = (props: Props) => {
         return;
       }
 
-      const cellDateClass = [];
+      const cellDateClass = [calendarCellDateStyle];
       if (today) {
         cellDateClass.push(calendarCellTodayStyle);
       }
@@ -245,8 +245,16 @@ const thCellStyle = css(calendarBaseStyle, css`
 
 const tdCellStyle = css(calendarBaseStyle, css`
   min-height: 10rem;
-  padding: 1rem;
 `);
+
+const calendarCellDateStyle = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: ${grey['50']};
+`;
 
 const calendarCellSatStyle = css`
   color: ${blue['800']};
@@ -263,11 +271,11 @@ const calendarCellTodayStyle = css`
 const cellAboveStyle = css`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.8rem;
 `;
 
 const cellSymptomListStyle = css`
   list-style: none;
+  padding: 1rem;
   font-size: 1.3rem;
 `;
 
@@ -284,8 +292,11 @@ const cellSymptomValueStyle = css`
 `;
 
 const conditionStyle = css`
-  margin: -0.4rem -0.4rem 0 0;
-  padding: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 3rem;
+  height: 3rem;
   border-radius: 6px;
 
   &.-so-good {
