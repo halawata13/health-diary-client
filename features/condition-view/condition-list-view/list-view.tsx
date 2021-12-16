@@ -7,12 +7,11 @@ interface Props {
   diaries: (Diary | DiaryNoData)[];
 }
 
-const now = DateTime.now();
-
 /**
  * リストビュー
  */
 export const ListView = (props: Props) => {
+  const now = DateTime.now();
   const diaries = props.diaries.filter(diary => now.month !== diary.date.month || now.day >= diary.date.day).reverse();
 
   return (
