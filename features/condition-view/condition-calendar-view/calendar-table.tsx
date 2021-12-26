@@ -5,6 +5,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { diaryFormModalState } from "../../../states/diary-form-modal.state";
 import { dateState } from '../../../states/date.state';
 import { Diary, DiaryNoData } from '../../../types';
+import { getColor } from "../../../services/color.service";
 
 interface Props {
   diaries: (Diary | DiaryNoData)[];
@@ -106,8 +107,10 @@ export const CalendarTable = (props: Props) => {
       const condition = diary && 'id' in diary ? diary.condition : null;
       const symptoms = diary && 'id' in diary ? diary.symptoms.map(symptom => (
         <li key={symptom.symptomId} className={cellSymptomItemStyle}>
-          <span className={cellSymptomValueStyle}>{symptom.level}</span>
-          {symptom.symptom.name}
+          <span className={cellSymptomValueStyle} style={{
+            backgroundColor: getColor(symptom.symptom.color)?.['800']
+          }}>{symptom.level}</span>
+          <span className={cellSymptomNameStyle}>{symptom.symptom.name}</span>
         </li>
       )) : null;
 
@@ -188,6 +191,7 @@ const thStyle = css`
 
 const tdStyle = css`
   border: solid 1px ${variables.colorBorder};
+  vertical-align: top;
 
   &.-so-good {
     background-color: ${blue["100"]};
@@ -251,8 +255,9 @@ const calendarCellDateStyle = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 3rem;
-  height: 3rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-bottom-right-radius: 0.4rem;
   background-color: ${grey['50']};
 `;
 
@@ -275,28 +280,43 @@ const cellAboveStyle = css`
 
 const cellSymptomListStyle = css`
   list-style: none;
-  padding: 1rem;
+  padding: 0.8rem 0.4rem 0.4rem;
   font-size: 1.3rem;
 `;
 
 const cellSymptomItemStyle = css`
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+`;
+
+const cellSymptomValueStyle = css`
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 0.4rem;
+  border-radius: 5px;
+  background-color: ${grey["800"]};
+  font-size: 1.2rem;
+  color: #fff;
+`;
+
+const cellSymptomNameStyle = css`
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 `;
 
-const cellSymptomValueStyle = css`
-  margin-right: 0.4rem;
-  font-weight: bold;
-`;
-
 const conditionStyle = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 3rem;
-  height: 3rem;
+  min-width: 2.4rem;
+  height: 2.4rem;
   border-radius: 6px;
 
   &.-so-good {
