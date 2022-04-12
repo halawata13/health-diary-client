@@ -5,7 +5,7 @@ import { css } from "@emotion/css";
 import { variables } from "../../styles/variables";
 import { useRecoilState } from 'recoil';
 import { dateState } from '../../states/date.state';
-import { DateTime } from 'luxon';
+import { DateTime, MonthNumbers } from 'luxon';
 
 const now = DateTime.now();
 
@@ -75,7 +75,7 @@ export const MonthControl = () => {
             ))}
           </select>
           年
-          <select className={controlSelectMonthStyle} value={month} onChange={ev => setMonth(Number(ev.target.value))}>
+          <select className={controlSelectMonthStyle} value={month} onChange={ev => setMonth(Number(ev.target.value) as MonthNumbers)}>
             {Array.from(Array(12))
               .filter((_, i) => year !== now.year || i + 1 <= now.month)
               .map((_, i) => (
