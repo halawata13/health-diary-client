@@ -18,6 +18,7 @@ import { RedirectToLogin } from '../../components/redirect-to-login';
 import { SymptomGraphMonthRate } from "../../features/symptom-detail/symptom-graph-month-rate";
 import { SymptomGraphAppearance } from "../../features/symptom-detail/symptom-graph-appearance";
 import { SymptomDetailHeader } from "../../features/symptom-detail/symptom-detail-header";
+import { SymptomGraphNotFound } from '../../features/symptom-detail/symptom-graph-not-found';
 
 export default function Detail() {
   const user = UserService.load();
@@ -26,7 +27,7 @@ export default function Detail() {
   const to = DateTime.now();
   const [ type, setType ] = useState<SymptomGraphType>('oneYear');
   const url = `/symptom?id=${router.query.id}&fromYear=${from.year}&fromMonth=${from.month}&toYear=${to.year}&toMonth=${to.month}`;
-  const { data: symptom, error: symptomError } = useSWR<SymptomWithDiarySymptoms, AxiosError>(url, getFetcher(url, user));
+  const { data: symptom, error: symptomError } = useSWR<SymptomWithDiarySymptoms, AxiosError>(router.isReady ? url : null, getFetcher(url, user));
 
   // 認証エラー時
   if (!user || symptomError?.response?.status === 401) {
@@ -45,7 +46,7 @@ export default function Detail() {
 
   const graph = (() => {
     if (symptom.diarySymptoms.length === 0) {
-      return <div>データがありません</div>;
+      return <SymptomGraphNotFound />;
     }
 
     switch (type) {
